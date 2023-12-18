@@ -12,10 +12,10 @@ npm run dev
 
 > :warning: **Don't forget to launch backend :)**
 
-Launch the test
+Launch the tests
 
 ```bash
-npm run tests
+npm run test
 ```
 
 ## Roadmap
