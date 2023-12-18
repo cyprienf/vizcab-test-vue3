@@ -15,7 +15,7 @@ npm run dev
 Launch the test
 
 ```bash
-npm run test
+npm run tests
 ```
 
 ## Roadmap
