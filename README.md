@@ -1,52 +1,28 @@
 # vizcab-test
 
-This template should help get you started developing with Vue 3 in Vite.
+## Getting stating
 
-## Recommended IDE Setup
+Launch the project
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
+```bash
+cd vizcab-test
+npm i
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+> :warning: **Don't forget to launch backend :)**
 
-```sh
-npm run build
+Launch the test
+
+```bash
+npm run test
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## Roadmap
 
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- [ ] Test the pagination method and add component tests with Vue Test Utils
+- [ ] Enhance CSS (variables, components, link underlining)
+- [ ] Finish BuildingDetails view
+- [ ] Add Pinia for state management, so you don't have to call the backend route every time you retrieve building info
+- [ ] Improve code formatting with prettier and eslint (import, typing...)
+- [ ] Variabilize certain values (backend base url, number of buildings per page, etc.)
