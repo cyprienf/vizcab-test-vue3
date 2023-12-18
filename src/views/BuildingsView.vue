@@ -8,8 +8,14 @@
     </div>
 
     <div class="buildings-view__grid">
-      <div v-for="building in sortedBuildings" :key="building.id">
+      <div v-for="building in paginatedAndSortedBuildings" :key="building.id">
         <BuildingComponent :building="building" />
+      </div>
+    </div>
+
+    <div class="buildings-view__pagination">
+      <div v-for="i in buildings.length / 10" :key="i">
+        <div @click="paginateNumber = i">{{ i }}</div>
       </div>
     </div>
   </div>
@@ -23,13 +29,16 @@ import type { Building } from '@/models/building'
 import BuildingComponent from '@/components/BuildingComponent.vue'
 
 import BuildingService from '@/services/building'
-import { sortByCarbonEmission, sortBySurface } from '@/utils/building-utils'
+import { sortByCarbonEmission, sortBySurface, paginate } from '@/utils/building-utils'
 
 const buildings: Ref<Building[]> = ref([])
 const filter: Ref<number> = ref(1)
+const paginateNumber: Ref<number> = ref(1)
 
-const sortedBuildings = computed(() => {
-  return filter.value === 1 ? sortByCarbonEmission(buildings.value) : sortBySurface(buildings.value)
+const paginatedAndSortedBuildings = computed(() => {
+  const paginated = paginate(buildings.value, 10, paginateNumber.value)
+
+  return filter.value === 1 ? sortByCarbonEmission(paginated) : sortBySurface(paginated)
 })
 
 onMounted(async () => {
@@ -48,6 +57,13 @@ onMounted(async () => {
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 1rem;
     column-gap: 1rem;
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 0.5rem;
+
+    margin-top: 1rem;
   }
 }
 </style>
