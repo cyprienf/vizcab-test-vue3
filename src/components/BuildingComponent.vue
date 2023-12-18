@@ -3,7 +3,10 @@
     <div class="building-component__title">My building</div>
     <div class="building-component__name">{{ building.name }}</div>
     <div class="building-component__address">{{ building.postcode }} {{ building.address }}</div>
-    <button class="building-component__button"><EyeIcon /> DETAILS</button>
+
+    <RouterLink :to="{ name: 'building-details', params: { id: building.id } }">
+      <button class="building-component__button"><EyeIcon /> DETAILS</button>
+    </RouterLink>
   </div>
 </template>
 
