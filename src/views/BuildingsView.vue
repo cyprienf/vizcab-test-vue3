@@ -7,7 +7,11 @@
       </select>
     </div>
 
-    <div>{{ sortedBuildings }}</div>
+    <div class="buildings-view__grid">
+      <div v-for="building in sortedBuildings" :key="building.id">
+        <BuildingComponent :building="building" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,6 +19,8 @@
 import { computed, onMounted, ref, type Ref } from 'vue'
 
 import type { Building } from '@/models/building'
+
+import BuildingComponent from '@/components/BuildingComponent.vue'
 
 import BuildingService from '@/services/building'
 import { sortByCarbonEmission, sortBySurface } from '@/utils/building-utils'
@@ -30,3 +36,18 @@ onMounted(async () => {
   buildings.value = (await BuildingService.getBuildings()).data
 })
 </script>
+
+<style lang="scss" scoped>
+.buildings-view {
+  &__filter {
+    margin-bottom: 1rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 1rem;
+    column-gap: 1rem;
+  }
+}
+</style>
